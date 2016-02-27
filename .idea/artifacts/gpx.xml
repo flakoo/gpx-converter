@@ -1,0 +1,55 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="gpx">
+    <output-path>$PROJECT_DIR$/out/artifacts/gpx</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="gpx-converter" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="Gradle: aopalliance:aopalliance:1.0" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: ch.qos.logback:logback-classic:1.1.5" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: ch.qos.logback:logback-core:1.1.5" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.6.5" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.6.5" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.6.5" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: com.fasterxml:classmate:1.1.0" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: javax.validation:validation-api:1.1.0.Final" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:1.3.3" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: ognl:ognl:3.0.8" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.apache.tomcat.embed:tomcat-embed-core:8.0.32" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.apache.tomcat.embed:tomcat-embed-el:8.0.32" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.apache.tomcat.embed:tomcat-embed-logging-juli:8.0.32" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.apache.tomcat.embed:tomcat-embed-websocket:8.0.32" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.codehaus.groovy:groovy:2.4.6" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.hibernate:hibernate-validator:5.2.4.Final" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.javassist:javassist:3.18.1-GA" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.jboss.logging:jboss-logging:3.3.0.Final" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.16" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.slf4j:jul-to-slf4j:1.7.16" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.slf4j:log4j-over-slf4j:1.7.16" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.slf4j:slf4j-api:1.7.16" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.springframework.boot:spring-boot-autoconfigure:1.3.3.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.springframework.boot:spring-boot-starter-logging:1.3.3.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.springframework.boot:spring-boot-starter-thymeleaf:1.3.3.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.springframework.boot:spring-boot-starter-tomcat:1.3.3.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.springframework.boot:spring-boot-starter-validation:1.3.3.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.springframework.boot:spring-boot-starter-web:1.3.3.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.springframework.boot:spring-boot-starter:1.3.3.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.springframework.boot:spring-boot:1.3.3.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.springframework:spring-aop:4.2.5.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.springframework:spring-beans:4.2.5.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.springframework:spring-context:4.2.5.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.springframework:spring-core:4.2.5.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.springframework:spring-expression:4.2.5.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.springframework:spring-web:4.2.5.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.springframework:spring-webmvc:4.2.5.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.thymeleaf:thymeleaf-spring4:2.1.4.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.thymeleaf:thymeleaf:2.1.4.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.unbescape:unbescape:1.1.0.RELEASE" module-name="gpx-converter" />
+          <element id="library" level="module" name="Gradle: org.yaml:snakeyaml:1.16" module-name="gpx-converter" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

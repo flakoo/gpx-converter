@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://www.topografix.com/GPX/1/1"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified"
+            xmlns="http://www.topografix.com/GPX/1/1"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="extensions" type="extensions_t" />
+
+	<xs:complexType name="extensions_t">
+		<xs:sequence>
+			<xs:element type="xs:float" name="speed"/>
+			<xs:element type="xs:float" name="temp"/>
+			<xs:element type="xs:short" name="bpm"/>
+			<xs:element type="xs:float" name="rpm"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>
