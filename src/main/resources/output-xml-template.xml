@@ -7,28 +7,28 @@
 
 
 
-	<!--<metadata>-->
-		<!--<link href="http://www.holux.com">-->
-			<!--<text>HOLUX Technology, Inc.</text>-->
-		<!--</link>-->
-		<!--<time>${time}</time>-->
-	<!--</metadata>-->
-	<!--<trk>-->
-		<!--<name><![CDATA[GPSport260 Pro-20151017-12:37]]></name>-->
-		<!--<trkseg>-->
-			<!--<trkpt lat="54.338756561" lon="18.622476578">-->
-				<!--<ele>44.000000</ele>-->
-				<!--<time>2015-10-17T10:37:53Z</time>-->
+	<metadata>
+		<link href="http://www.holux.com">
+			<text>HOLUX Technology, Inc.</text>
+		</link>
+		<time>${time}</time>
+	</metadata>
+	<trk>
+		<name><![CDATA[GPSport260 Pro-20151017-12:37]]></name>
+		<trkseg>
+			<trkpt lat="54.338756561" lon="18.622476578">
+				<ele>44.000000</ele>
+				<time>2015-10-17T10:37:53Z</time>
 
-				<!--<extensions>-->
-					<!--<gpxtpx:TrackPointExtension>-->
+				<extensions>
+					<gpxtpx:TrackPointExtension>
 
-						<!--<gpxtpx:atemp>0.00</gpxtpx:atemp>-->
-						<!--<gpxtpx:hr>88</gpxtpx:hr>-->
-						<!--<gpxtpx:cad>0.00</gpxtpx:cad>-->
-					<!--</gpxtpx:TrackPointExtension>-->
-				<!--</extensions>-->
-			<!--</trkpt>-->
-		<!--</trkseg>-->
-	<!--</trk>-->
+						<gpxtpx:atemp>0.00</gpxtpx:atemp>
+						<gpxtpx:hr>88</gpxtpx:hr>
+						<gpxtpx:cad>0.00</gpxtpx:cad>
+					</gpxtpx:TrackPointExtension>
+				</extensions>
+			</trkpt>
+		</trkseg>
+	</trk>
 </gpx>

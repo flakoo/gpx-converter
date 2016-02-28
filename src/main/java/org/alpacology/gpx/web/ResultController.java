@@ -1,6 +1,6 @@
 package org.alpacology.gpx.web;
 
-import org.alpacology.gpx.converter.HoluxParser;
+import org.alpacology.gpx.converter.HoluxXmlConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ResultController {
 
 	@Autowired
-	private HoluxParser holuxParser;
+	private HoluxXmlConverter holuxXmlConverter;
 
 	@RequestMapping("/result")
 	public String showResult() {
-		holuxParser.parse();
+		holuxXmlConverter.process();
 		return "result";
 	}
 }
