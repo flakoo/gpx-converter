@@ -1,6 +1,7 @@
 package org.alpacology.gpx.converter.processor;
 
 import org.alpacology.gpx.converter.StreamNavigator;
+import org.alpacology.gpx.converter.preprocessor.PreprocessorOutput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,21 +21,21 @@ public class SegmentProcessor implements Processor {
 	private StreamNavigator streamNavigator;
 
 	@Override
-	public void process(XMLStreamReader inputStream, XMLStreamWriter outputStream) throws XMLStreamException, JAXBException {
+	public void process(XMLStreamReader inputStream, XMLStreamWriter outputStream, PreprocessorOutput preprocessorOutput) throws XMLStreamException, JAXBException {
 		try {
 			while (true) {
-				processNextSegment(inputStream, outputStream);
+				processNextSegment(inputStream, outputStream, preprocessorOutput);
 			}
 		} catch(NoSuchElementException e) {
 			// End reached.
 		}
 	}
 
-	private void processNextSegment(XMLStreamReader inputStream, XMLStreamWriter outputStream) throws XMLStreamException, JAXBException {
+	private void processNextSegment(XMLStreamReader inputStream, XMLStreamWriter outputStream, PreprocessorOutput preprocessorOutput) throws XMLStreamException, JAXBException {
 		streamNavigator.goToNextTagIfNotClosingOf("trkseg", "trk", inputStream);
 
 		outputStream.writeStartElement("http://www.topografix.com/GPX/1/1", "trkseg");
-		trackPointProcessor.process(inputStream, outputStream);
+		trackPointProcessor.process(inputStream, outputStream, preprocessorOutput);
 		outputStream.writeEndElement();
 
 		inputStream.next();

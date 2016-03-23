@@ -1,6 +1,8 @@
 package org.alpacology.gpx.converter;
 
-import org.alpacology.gpx.converter.processor.StreamProcessor;
+import org.alpacology.gpx.converter.preprocessor.GpxPreprocessor;
+import org.alpacology.gpx.converter.preprocessor.PreprocessorOutput;
+import org.alpacology.gpx.converter.processor.GpxProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +18,6 @@ import java.io.IOException;
 public class HoluxXmlConverter {
 	Logger LOGGER = LoggerFactory.getLogger(HoluxXmlConverter.class);
 
-	public static final String OUTPUT_FILE = "E:/out.xml";
-	public static final String INPUT_FILE = "src/main/resources/static/test_holux.gpx";
-
 	@Autowired
 	private PrologueWriter prologueWriter;
 
@@ -26,58 +25,51 @@ public class HoluxXmlConverter {
 	private EpilogueWriter epilogueWriter;
 
 	@Autowired
-	private StreamProcessor streamProcessor;
+	private GpxProcessor gpxProcessor;
 
+	@Autowired
+	private GpxPreprocessor gpxPreprocessor;
 
-	public void process() {
-		XMLStreamReader streamReader = getXmlStreamReader();
+	public void convert() {
+		PreprocessorOutput preprocessorOutput = null;
+		try {
+			preprocessorOutput = preprocess();
+			process(preprocessorOutput);
+		} catch (XMLStreamException e) {
+			LOGGER.error(e.getMessage(), e);
+		}
+	}
+
+	private void process(PreprocessorOutput preprocessorOutput) throws XMLStreamException {
+		XMLStreamReader streamReader = XMLStreamFactory.getXmlStreamReader();
 		if (streamReader == null) {
 			return;
 		}
 
-		XMLStreamWriter streamWriter = getXmlStreamWriter();
+		XMLStreamWriter streamWriter = XMLStreamFactory.getXmlStreamWriter();
 		if (streamWriter == null) {
 			return;
 		}
 
 		try {
 			prologueWriter.writePrologue(streamWriter);
-			streamProcessor.process(streamReader, streamWriter);
+			gpxProcessor.process(streamReader, streamWriter, preprocessorOutput);
 			epilogueWriter.writeEpilogue(streamWriter);
 
 			freeResources(streamWriter, streamReader);
-		} catch (XMLStreamException e) {
-			LOGGER.error(e.getMessage(), e);
 		} catch (JAXBException e) {
 			LOGGER.error(e.getMessage(), e);
 		}
+	}
+
+	private PreprocessorOutput preprocess() throws XMLStreamException {
+		PreprocessorOutput preprocessorOutput = gpxPreprocessor.preprocess();
+		return preprocessorOutput;
 	}
 
 	private void freeResources(XMLStreamWriter eventWriter, XMLStreamReader eventReader) throws XMLStreamException {
 		eventReader.close();
 		eventWriter.flush();
 		eventWriter.close();
-	}
-
-	private XMLStreamWriter getXmlStreamWriter() {
-		try {
-			// TODO  StreamResult?
-			return XMLOutputFactory.newInstance().createXMLStreamWriter(new FileWriter(OUTPUT_FILE));
-		} catch (XMLStreamException e) {
-			LOGGER.error(e.getMessage(), e);
-			return null;
-		} catch (IOException e) {
-			LOGGER.error(e.getMessage(), e);
-			return null;
-		}
-	}
-
-	private XMLStreamReader getXmlStreamReader() {
-		try {
-			return XMLInputFactory.newInstance().createXMLStreamReader(new StreamSource(INPUT_FILE));
-		} catch (XMLStreamException e) {
-			LOGGER.error(e.getMessage(), e);
-			return null;
-		}
 	}
 }

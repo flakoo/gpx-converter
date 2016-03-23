@@ -13,7 +13,7 @@ public class ResultController {
 
 	@RequestMapping("/result")
 	public String showResult() {
-		holuxXmlConverter.process();
+		holuxXmlConverter.convert();
 		return "result";
 	}
 }

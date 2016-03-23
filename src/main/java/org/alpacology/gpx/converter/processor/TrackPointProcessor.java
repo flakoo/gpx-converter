@@ -3,6 +3,7 @@ package org.alpacology.gpx.converter.processor;
 import org.alpacology.gpx.converter.StreamNavigator;
 import org.alpacology.gpx.converter.model.garmin.GarminTrackPoint;
 import org.alpacology.gpx.converter.model.holux.HoluxTrackPoint;
+import org.alpacology.gpx.converter.preprocessor.PreprocessorOutput;
 import org.alpacology.gpx.converter.transformer.TrackPointXmlFragmentTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,17 +24,17 @@ public class TrackPointProcessor implements Processor {
 	private StreamNavigator streamNavigator;
 
 	@Override
-	public void process(XMLStreamReader inputStream, XMLStreamWriter outputStream) throws XMLStreamException, JAXBException {
+	public void process(XMLStreamReader inputStream, XMLStreamWriter outputStream, PreprocessorOutput preprocessorOutput) throws XMLStreamException, JAXBException {
 		try {
 			while (true) {
-				processNextPoint(inputStream, outputStream);
+				processNextPoint(inputStream, outputStream, preprocessorOutput);
 			}
 		} catch(NoSuchElementException e) {
 			// End reached.
 		}
 	}
 
-	private void processNextPoint(XMLStreamReader inputStream, XMLStreamWriter outputStream) throws JAXBException, XMLStreamException {
+	private void processNextPoint(XMLStreamReader inputStream, XMLStreamWriter outputStream, PreprocessorOutput preprocessorOutput) throws JAXBException, XMLStreamException {
 		streamNavigator.goToNextTagIfNotClosingOf("trkpt", "trkseg", inputStream);
 
 		JAXBContext jaxbInputContext = JAXBContext.newInstance(HoluxTrackPoint.class);
@@ -45,7 +46,7 @@ public class TrackPointProcessor implements Processor {
 		Marshaller marshaller = jaxbOutputContext.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FRAGMENT, true);
 		marshaller.marshal(
-				trackPointXmlFragmentTransformer.transform(sourceJaxbElement),
+				trackPointXmlFragmentTransformer.transform(sourceJaxbElement, preprocessorOutput),
 				outputStream
 		);
 	}

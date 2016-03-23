@@ -2,6 +2,7 @@ package org.alpacology.gpx.converter.processor;
 
 import org.alpacology.gpx.converter.StreamNavigator;
 import org.alpacology.gpx.converter.model.common.Metadata;
+import org.alpacology.gpx.converter.preprocessor.PreprocessorOutput;
 import org.alpacology.gpx.converter.transformer.MetadataXmlFragmentTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +21,12 @@ public class MetadataProcessor implements Processor {
 	@Autowired
 	private StreamNavigator streamNavigator;
 
-	public void process(XMLStreamReader inputStream, XMLStreamWriter outputStream) throws XMLStreamException, JAXBException {
+	public void process(XMLStreamReader inputStream, XMLStreamWriter outputStream, PreprocessorOutput preprocessorOutput) throws XMLStreamException, JAXBException {
 		streamNavigator.goToNextTag("metadata", inputStream);
-		writeMetadata(inputStream, outputStream);
+		writeMetadata(inputStream, outputStream, preprocessorOutput);
 	}
 
-	private void writeMetadata(XMLStreamReader inputStream, XMLStreamWriter outputStream) throws JAXBException {
+	private void writeMetadata(XMLStreamReader inputStream, XMLStreamWriter outputStream, PreprocessorOutput preprocessorOutput) throws JAXBException {
 		JAXBContext jaxbContext = JAXBContext.newInstance(Metadata.class);
 
 		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
@@ -34,7 +35,7 @@ public class MetadataProcessor implements Processor {
 		Marshaller marshaller = jaxbContext.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FRAGMENT, true);
 		marshaller.marshal(
-				metadataXmlFragmentTransformer.transform(sourceJaxbElement),
+				metadataXmlFragmentTransformer.transform(sourceJaxbElement, preprocessorOutput),
 				outputStream
 		);
 	}

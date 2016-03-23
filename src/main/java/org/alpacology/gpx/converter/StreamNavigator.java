@@ -9,11 +9,11 @@ import java.util.NoSuchElementException;
 
 @Service
 public class StreamNavigator {
-	public void goToNextTag(String tag, XMLStreamReader inputStream) throws XMLStreamException {
+	public void goToNextTag(String tag, XMLStreamReader streamReader) throws XMLStreamException {
 		int elementType;
 		do {
-			elementType = inputStream.next();
-		} while (isNotTheRightTagAndNotTheEnd(tag, inputStream, elementType));
+			elementType = streamReader.next();
+		} while (isNotTheRightTagAndNotTheEnd(tag, streamReader, elementType));
 
 		checkIfNotEndOfDocument(elementType);
 
